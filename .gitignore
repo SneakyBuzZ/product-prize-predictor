@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.sqlite
+
+# Data
+data/raw/*
+data/image_cache/*
+data/interim/*
+data/processed/*
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Models
+checkpoints/*
+experiments/*
+reports/*
+
+# Env
+.env
+*.env
+
+# Text Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
