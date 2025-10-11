@@ -18,7 +18,6 @@ data/processed/*
 # Models
 checkpoints/*
 experiments/*
-reports/*
 
 # Env
 .env
