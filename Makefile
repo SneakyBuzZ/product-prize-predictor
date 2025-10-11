@@ -48,3 +48,7 @@ ingest:
 clean-ingest:
 	rm -rf $(MANIFEST)
 	rm -rf reports/
+
+extract-features:
+	@echo ">> EXTRACTING FEATURES FROM MANIFEST"
+	$(PY) $(SRC)/preprocessing/feature_extraction.py
