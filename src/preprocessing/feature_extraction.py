@@ -3,6 +3,7 @@ import re
 from transformers import pipeline
 from tqdm import tqdm
 import torch
+import numpy as np
 
 output_path = 'data/processed/manifest_features.csv'
 device = 0 if torch.cuda.is_available() else -1
@@ -45,12 +46,19 @@ def keyword_flags(text):
 def truncate_text(text, max_len=max_len):
     return text[:max_len]
 
+def extract_value(text):
+    match = re.search(r'Value:\s*([\d\.]+)', text, re.I)
+    if match:
+        return float(match.group(1))
+    return np.nan
+
 if __name__ == "__main__":
     print("📥 LOADING MANIFEST")
     manifest = pd.read_csv('data/processed/manifest.csv')
     manifest['catalog_content'] = manifest['catalog_content'].fillna('')
 
     print("🛠️ EXTRACTING FEATURES")
+    manifest['value'] = manifest['catalog_content'].apply(extract_value)
     manifest['pack_count'] = manifest['catalog_content'].apply(extract_pack_count)
     manifest['unit'] = manifest['catalog_content'].apply(extract_unit)
     manifest['bullet_count'] = manifest['catalog_content'].apply(count_bullets)

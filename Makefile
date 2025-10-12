@@ -52,3 +52,19 @@ clean-ingest:
 extract-features:
 	@echo ">> EXTRACTING FEATURES FROM MANIFEST"
 	$(PY) $(SRC)/preprocessing/feature_extraction.py
+
+generate-text-embeddings:
+	@echo ">> GENERATING TEXT EMBEDDINGS FROM MANIFEST"
+	$(PY) $(SRC)/preprocessing/text_embeddings.py
+
+generate-image-embeddings:
+	@echo ">> GENERATING IMAGE EMBEDDINGS FROM MANIFEST"
+	$(PY) $(SRC)/preprocessing/image_embeddings.py
+
+clean-embeddings:
+	rm -rf data/embeddings/
+
+build-features:
+	@echo ">> BUILDING FINAL FEATURES DATASET"
+	$(PY) $(SRC)/preprocessing/build_features.py
+

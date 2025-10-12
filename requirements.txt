@@ -16,3 +16,7 @@ matplotlib
 seaborn
 tqdm
 wandb
+aiohttp
+aiofiles
+asyncio
+ipykernel
